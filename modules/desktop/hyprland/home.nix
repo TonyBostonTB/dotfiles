@@ -134,7 +134,6 @@ let
     bind=SUPER,F,fullscreen,
     bind=SUPER,R,forcerendererreload
     bind=SUPERSHIFT,R,exec,${pkgs.hyprland}/bin/hyprctl reload
-    bind=SUPER,T,exec,${pkgs.emacs}/bin/emacsclient -c
 
     bind=SUPER,left,movefocus,l
     bind=SUPER,right,movefocus,r
