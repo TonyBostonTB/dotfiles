@@ -12,7 +12,7 @@
 #            └─ ./home.nix 
 #
 
-{ lib, inputs, nixpkgs, home-manager, user, location, hyprland, ... }:
+{ lib, inputs, nixpkgs, home-manager, nur, user, location, hyprland, ... }:
 
 let
   system = "x86_64-linux";                                  # System architecture
@@ -36,6 +36,7 @@ in
       };
     };                                                      # Pass flake variable
     modules = [                                             # Modules that are used.
+      nur.nixosModules.nur
       hyprland.nixosModules.default
       ./desktop
       ./configuration.nix

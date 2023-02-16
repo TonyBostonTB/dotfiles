@@ -15,13 +15,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nur = {
+      url = "github:nix-community/NUR";
+    };
+
     hyprland = {                                                          # Official Hyprland flake
       url = "github:vaxerski/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, darwin, hyprland, ... }:
+  outputs = inputs @ { self, nixpkgs, home-manager, darwin, nur, hyprland, ... }:
 
     let                                                                   # variables that can be used in the config files
       user = "tboston";
@@ -31,7 +35,7 @@
       nixosConfigurations = (                                             # NixOS configurations
         import ./hosts {                                                  # Imports ./hosts.default
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs home-manager user location hyprland;     # Also inherit home-manager so it does not need to be defined here
+          inherit inputs nixpkgs home-manager nur user location hyprland;     # Also inherit home-manager so it does not need to be defined here
         }
       );
       darwinConfigurations = (                                            # Darwin Configurations

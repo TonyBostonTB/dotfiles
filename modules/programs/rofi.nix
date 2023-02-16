@@ -9,15 +9,19 @@ let
   colors = import ../themes/colors.nix;
 in
 {
-  home = {
-    packages = with pkgs; [
-      rofi-power-menu
-    ];
-  };
+
+  #home = {
+  #  packages = with pkgs; [
+  #    rofi-power-menu
+  #  ];
+  #};
 
   programs = {
     rofi = {
       enable = true;
+      plugins = with pkgs; [
+        rofi-power-menu
+      ];
       terminal = "${pkgs.alacritty}/bin/alacritty";           # Alacritty is default terminal emulator
       location = "center";
       font = "FiraCode Nerd Font Mono 11";

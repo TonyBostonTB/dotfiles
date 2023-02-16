@@ -14,6 +14,10 @@
 			userEmail = "tboston@posteo.net";
 		};
 
+    firefox = {
+      enable = true; 
+      };
+
   	home-manager.enable = true;
 
 		neovim = {
