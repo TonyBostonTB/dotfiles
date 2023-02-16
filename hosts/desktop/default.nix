@@ -34,7 +34,7 @@ let
 
 in {
   imports =                                               # For now, if applying to other system, swap files
-    #[(import ./hardware-configuration.nix)] ++            # Current system hardware config @ /etc/nixos/hardware-configuration.nix
+    [(import ./hardware-configuration.nix)] ++            # Current system hardware config @ /etc/nixos/hardware-configuration.nix
     [(import ../../modules/programs/games.nix)] ++        # Gaming
     [(import ../../modules/desktop/hyprland/default.nix)] ++ # Window Manager
     (import ../../modules/desktop/virtualisation) ++      # Virtual Machines & VNC
@@ -106,22 +106,6 @@ in {
     }];
 	}; 
 
-  boot.initrd.availableKernelModules = [
-    "ahci"
-    "xhci_pci"
-    "virtio_pci"
-    "virtio_blk"
-    "ehci_pci"
-    "nvme"
-    "uas"
-    "sd_mod"
-    "sr_mod"
-    "sdhci_pci"
-  ];
-  boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.kernelModules = [ "kvm-intel" "kvm-amd" ];
-  boot.extraModulePackages = [ ];
-
   fileSystems = {
     "/" = {
       device = "rpool/nixos/root";
@@ -175,9 +159,6 @@ in {
     };
   }) zfsRoot.bootDevices);
 
-  networking.useDHCP = lib.mkDefault true;
-
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.cpu.amd.updateMicrocode =
