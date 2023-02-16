@@ -18,10 +18,15 @@
     (import ../modules/editors) ++          # Native doom emacs instead of nix-community flake
     (import ../modules/shell);
 
-  users.users.${user} = {                   # System User
-    isNormalUser = true;
-    extraGroups = [ "wheel" "video" "audio" "camera" "networkmanager" "lp" "scanner" "kvm" "libvirtd" "plex" ];
-    shell = pkgs.zsh;                       # Default shell
+  users = {
+		defaultUserShell = pkgs.zsh;
+		users.${user} = {
+			isNormalUser = true;
+      extraGroups = [ "wheel" "video" "audio" "camera" "networkmanager" "kvm" "libvirtd" ];
+			openssh.authorizedKeys.keys = [
+				"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIINkmizml/XsSRzp3mNIumb3ZEPQoZhi/TtDU7rOUiKA tboston@macbook"
+			];
+		};
   };
 
   security.sudo.wheelNeedsPassword = false; # User does not need to give password when using sudo.

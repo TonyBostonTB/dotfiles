@@ -39,17 +39,6 @@
 		wireless.enable = false;
 	};
 
-  users = {
-		defaultUserShell = pkgs.zsh;
-		users.tboston = {
-			isNormalUser = true;
-      extraGroups = [ "wheel" "video" "audio" "camera" "networkmanager" "kvm" "libvirtd" ];
-			openssh.authorizedKeys.keys = [
-				"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIINkmizml/XsSRzp3mNIumb3ZEPQoZhi/TtDU7rOUiKA tboston@macbook"
-			];
-		};
-  };
-
   programs = {
 		gnupg.agent = {
 			enable = true;

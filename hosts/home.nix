@@ -4,9 +4,6 @@
   home = {
   	username = "tboston";
   	homeDirectory = "/home/tboston";
-  	packages = with pkgs; [
-			brave
-	];
   	stateVersion = "22.11";
   };
 
