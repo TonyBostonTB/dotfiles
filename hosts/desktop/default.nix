@@ -51,7 +51,6 @@
   };
 
   programs = {
-		git.enable = true;
 		gnupg.agent = {
 			enable = true;
 			enableSSHSupport = true;
@@ -60,14 +59,6 @@
     vim = {
 			defaultEditor = true;
     };
-		zsh = {
-			enable = true;
-			ohMyZsh = {
-				enable = true;
-				plugins = [ "git" "man" ];
-				theme = "bureau";
-			};
-		};
   };
 
   services = {

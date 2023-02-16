@@ -15,20 +15,9 @@
 
       ohMyZsh = {                               # Extra plugins for zsh
         enable = true;
-        plugins = [ "git" ];
+        plugins = [ "git" "man" ];
+        theme = "bureau";
       };
-
-      shellInit = ''                            # Zsh theme
-        # Spaceship
-        source ${pkgs.spaceship-prompt}/share/zsh/site-functions/prompt_spaceship_setup
-        autoload -U promptinit; promptinit
-        # Hook direnv
-        #emulate zsh -c "$(direnv hook zsh)"
-        # Swag
-        ${pkgs.nitch}/bin/nitch
-
-        #eval "$(direnv hook zsh)"
-      '';
     };
   };
 }
